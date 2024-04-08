@@ -6,10 +6,32 @@
   <component name="ChangeListManager">
     <list default="true" id="69e11e88-ba09-4ceb-9780-32fc844b9398" name="更改" comment="完成基本流程与本地测试">
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/example-common/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/example-consumer/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/example-provider/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/RpcApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/config/RpcConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/constant/RpcConstant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/model/RpcRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/model/RpcResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/proxy/ServiceProxy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/proxy/ServiceProxyFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/registry/LocalRegistry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/serializer/JdkSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/serializer/Serializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/server/HttpServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/server/HttpServerHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/server/VertxHttpServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/utils/ConfigUtils.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ink-rpc-easy/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example-consumer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example-consumer/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example-provider/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example-provider/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +49,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="I:\Resource\repository" />
+        <option name="mavenHome" value="D:/safesoft/apache-maven-3.9.0" />
+        <option name="useMavenConfig" value="true" />
+        <option name="userSettingsFile" value="D:\safesoft\apache-maven-3.9.0\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="2efCVeD3o94kyT00dEXFEKMVFd0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -35,22 +67,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;corretto-11&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "corretto-11",
+    "last_opened_file_path": "I:/Resource/Projects/ink-rpc",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="I:\Resource\Projects\ink-rpc" />
+    </key>
+  </component>
   <component name="RunManager" selected="应用程序.EasyConsumerExample">
     <configuration name="EasyConsumerExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ink.consumer.EasyConsumerExample" />
@@ -94,7 +137,7 @@
       <option name="presentableId" value="Default" />
       <updated>1712286271439</updated>
       <workItem from="1712286272629" duration="17331000" />
-      <workItem from="1712556936292" duration="325000" />
+      <workItem from="1712556936292" duration="6822000" />
     </task>
     <task id="LOCAL-00001" summary="完成基本流程与本地测试">
       <option name="closed" value="true" />
@@ -104,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712557237480</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="完成基本流程与本地测试">
+      <option name="closed" value="true" />
+      <created>1712557492494</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712557492494</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

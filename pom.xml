@@ -13,6 +13,7 @@
         <module>example-consumer</module>
         <module>example-provider</module>
         <module>ink-rpc-easy</module>
+        <module>ink-rpc-core</module>
     </modules>
 
     <properties>
