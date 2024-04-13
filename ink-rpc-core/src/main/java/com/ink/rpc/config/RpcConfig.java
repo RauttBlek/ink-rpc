@@ -28,4 +28,9 @@ public class RpcConfig {
      */
     private Integer post = 8080;
 
+    /**
+     * 是否开启 MOCK
+     */
+    private boolean mock = false;
+
 }

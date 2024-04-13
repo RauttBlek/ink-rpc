@@ -16,7 +16,7 @@ public class RpcApplication {
     /**
      * 初始化
      */
-    public static void init(){
+    private static void init(){
         RpcConfig newConfig;
         try {
             newConfig = ConfigUtils.loadConfig(RpcConfig.class, RpcConstant.DEFAULT_CONFIG_PREFIX);
@@ -31,7 +31,7 @@ public class RpcApplication {
      * 支持传入自定义配置的初始化
      * @param config 自定义配置
      */
-    public static void init(RpcConfig config){
+    private static void init(RpcConfig config){
         rpcConfig = config;
         log.info("rpc init, config = {}", config.toString());
     }
