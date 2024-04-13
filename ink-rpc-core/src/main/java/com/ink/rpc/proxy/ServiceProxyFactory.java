@@ -1,7 +1,6 @@
 package com.ink.rpc.proxy;
 
 import com.ink.rpc.RpcApplication;
-import com.ink.rpc.config.RpcConfig;
 
 import java.lang.reflect.Proxy;
 
