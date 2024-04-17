@@ -1,0 +1,4 @@
+jdk=com.ink.rpc.serializer.JdkSerializer
+json=com.ink.rpc.serializer.JsonSerializer
+hessian=com.ink.rpc.serializer.HessianSerializer
+kryo=com.ink.rpc.serializer.KryoSerializer

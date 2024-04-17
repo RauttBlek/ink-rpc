@@ -3,8 +3,9 @@ package com.ink.rpc.server;
 import com.ink.rpc.model.RpcRequest;
 import com.ink.rpc.model.RpcResponse;
 import com.ink.rpc.registry.LocalRegistry;
-import com.ink.rpc.serializer.JdkSerializer;
 import com.ink.rpc.serializer.Serializer;
+import com.ink.rpc.serializer.SerializerFactory;
+import com.ink.rpc.serializer.SerializerKeys;
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpServerRequest;
@@ -17,7 +18,7 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
     @Override
     public void handle(HttpServerRequest httpServerRequest) {
         //指定一个序列化器
-        final JdkSerializer serializer = new JdkSerializer();
+        final Serializer serializer = SerializerFactory.getSerializerInstance(SerializerKeys.JDK);
 
         //打印日志
         System.out.println("Received Request:" + httpServerRequest.method() + " " + httpServerRequest.uri());
