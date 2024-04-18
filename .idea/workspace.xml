@@ -4,22 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69e11e88-ba09-4ceb-9780-32fc844b9398" name="更改" comment="增加模拟服务调用">
+    <list default="true" id="69e11e88-ba09-4ceb-9780-32fc844b9398" name="更改" comment="增加使用 SPI 机制获取序列化器实例的功能，添加了序列化器工厂">
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/example-common/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/example-consumer/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/example-provider/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/serializer/HessianSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/serializer/JsonSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/serializer/KryoSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/serializer/SerializerFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/serializer/SerializerKeys.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/spi/SpiLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/resources/META-INF/rpc/system/com.ink.rpc.serializer.Serializer" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/config/RegistryConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/model/ServiceMetaInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/registry/EtcdRegistry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/registry/Registry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/registry/RegistryFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/registry/RegistryKeys.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/resources/META-INF/rpc/system/com.ink.rpc.registry.Registry" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/resources/application.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ink-rpc-easy/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example-provider/src/main/java/com/ink/provider/EasyProviderExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/example-provider/src/main/java/com/ink/provider/EasyProviderExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ink-rpc-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ink-rpc-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/RpcApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/RpcApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/config/RpcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/config/RpcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/constant/RpcConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/constant/RpcConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/model/RpcRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/model/RpcRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/proxy/ServiceProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/proxy/ServiceProxy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/server/HttpServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/server/HttpServerHandler.java" afterDir="false" />
     </list>
@@ -130,7 +135,9 @@
       <workItem from="1712556936292" duration="6843000" />
       <workItem from="1712989989091" duration="6367000" />
       <workItem from="1713238293269" duration="7777000" />
-      <workItem from="1713341685507" duration="13321000" />
+      <workItem from="1713341685507" duration="15351000" />
+      <workItem from="1713414824858" duration="5069000" />
+      <workItem from="1713434628246" duration="19180000" />
     </task>
     <task id="LOCAL-00001" summary="完成基本流程与本地测试">
       <option name="closed" value="true" />
@@ -172,7 +179,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713013816000</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="增加使用 SPI 机制获取序列化器实例的功能，添加了序列化器工厂">
+      <option name="closed" value="true" />
+      <created>1713355512142</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1713355512142</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,6 +209,7 @@
     <MESSAGE value="完成基本流程与本地测试" />
     <MESSAGE value="增加配置读取" />
     <MESSAGE value="增加模拟服务调用" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加模拟服务调用" />
+    <MESSAGE value="增加使用 SPI 机制获取序列化器实例的功能，添加了序列化器工厂" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加使用 SPI 机制获取序列化器实例的功能，添加了序列化器工厂" />
   </component>
 </project>

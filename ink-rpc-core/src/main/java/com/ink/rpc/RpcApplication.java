@@ -1,7 +1,10 @@
 package com.ink.rpc;
 
+import com.ink.rpc.config.RegistryConfig;
 import com.ink.rpc.config.RpcConfig;
 import com.ink.rpc.constant.RpcConstant;
+import com.ink.rpc.registry.Registry;
+import com.ink.rpc.registry.RegistryFactory;
 import com.ink.rpc.utils.ConfigUtils;
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,6 +37,11 @@ public class RpcApplication {
     private static void init(RpcConfig config){
         rpcConfig = config;
         log.info("rpc init, config = {}", config.toString());
+        //初始化注册中心
+        RegistryConfig registryConfig = rpcConfig.getRegistryConfig();
+        Registry registry = RegistryFactory.getInstance(registryConfig.getRegistry());
+        registry.init(registryConfig);
+        log.info("registry init completely");
     }
 
     /**

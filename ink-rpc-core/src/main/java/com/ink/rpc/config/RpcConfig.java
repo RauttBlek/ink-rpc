@@ -4,7 +4,7 @@ import com.ink.rpc.serializer.SerializerKeys;
 import lombok.Data;
 
 /**
- * RPC 框架配置
+ * RPC 框架配置类
  */
 @Data
 public class RpcConfig {
@@ -27,7 +27,7 @@ public class RpcConfig {
     /**
      * 端口号
      */
-    private Integer post = 8080;
+    private Integer serverPort = 8080;
 
     /**
      * 是否开启 MOCK
@@ -38,4 +38,9 @@ public class RpcConfig {
      * 序列化器
      */
     private String serializer = SerializerKeys.JDK;
+
+    /**
+     * 注册器配置
+     */
+    private RegistryConfig registryConfig = new RegistryConfig();
 }
