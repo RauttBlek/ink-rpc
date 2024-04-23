@@ -43,8 +43,8 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
             }
             try{
                 //获取要调用的实现类，并通过反射调用
+
                 Class<?> implClass = LocalRegistry.get(request.getServiceName());
-                //Class<?> implClass = Class.forName(request.getServiceName());
                 Method method = implClass.getMethod(request.getMethodName(), request.getParaType());
                 Object result = method.invoke(implClass.getDeclaredConstructor().newInstance(), request.getParaArray());
                 //封装响应

@@ -9,7 +9,7 @@ import com.ink.rpc.utils.ConfigUtils;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Rpc 框架应用，存放全局变量
+ * Rpc 框架应用，存放,加载全局变量
  */
 @Slf4j
 public class RpcApplication {
@@ -31,17 +31,20 @@ public class RpcApplication {
     }
 
     /**
-     * 支持传入自定义配置的初始化
+     * 初始化 RPC 框架配置，同时初始化注册中心
      * @param config 自定义配置
      */
     private static void init(RpcConfig config){
         rpcConfig = config;
         log.info("rpc init, config = {}", config.toString());
-        //初始化注册中心
+        //初始化注册中心，SPILoader 中将保有 register 的缓存
         RegistryConfig registryConfig = rpcConfig.getRegistryConfig();
         Registry registry = RegistryFactory.getInstance(registryConfig.getRegistry());
         registry.init(registryConfig);
-        log.info("registry init completely");
+        log.info("registry init completely, config = {}", registryConfig);
+
+        //创建一个 ShutDown Hook，用于在 JVM 退出时执行操作（回收资源）
+        Runtime.getRuntime().addShutdownHook(new Thread(registry::destroy));
     }
 
     /**
