@@ -26,17 +26,17 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
         //异步处理 HTTP 请求
         httpServerRequest.bodyHandler(body -> {
             byte[] bytes = body.getBytes();
-            RpcRequest request = null;
+            RpcRequest rpcRequest = null;
             try{
                 //反序列化
-                request = serializer.deSerialize(bytes, RpcRequest.class);
+                rpcRequest = serializer.deSerialize(bytes, RpcRequest.class);
             }catch (IOException e){
                 e.printStackTrace();
             }
             //构造响应对象
             RpcResponse rpcResponse = new RpcResponse();
             //当请求为空时直接返回
-            if(request == null){
+            if(rpcRequest == null){
                 rpcResponse.setMessage("rpcRequest is null");
                 doResponse(httpServerRequest, rpcResponse, serializer);
                 return;
@@ -44,9 +44,9 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
             try{
                 //获取要调用的实现类，并通过反射调用
 
-                Class<?> implClass = LocalRegistry.get(request.getServiceName());
-                Method method = implClass.getMethod(request.getMethodName(), request.getParaType());
-                Object result = method.invoke(implClass.getDeclaredConstructor().newInstance(), request.getParaArray());
+                Class<?> implClass = LocalRegistry.get(rpcRequest.getServiceName());
+                Method method = implClass.getMethod(rpcRequest.getMethodName(), rpcRequest.getParaType());
+                Object result = method.invoke(implClass.getDeclaredConstructor().newInstance(), rpcRequest.getParaArray());
                 //封装响应
                 rpcResponse.setData(result);
                 rpcResponse.setDataType(method.getReturnType());
