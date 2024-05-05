@@ -6,6 +6,8 @@ import com.ink.rpc.RpcApplication;
 import com.ink.rpc.config.RegistryConfig;
 import com.ink.rpc.config.RpcConfig;
 import com.ink.rpc.constant.RpcConstant;
+import com.ink.rpc.loadbalancer.LoadBalancer;
+import com.ink.rpc.loadbalancer.LoadBalancerFactory;
 import com.ink.rpc.model.RpcRequest;
 import com.ink.rpc.model.RpcResponse;
 import com.ink.rpc.model.ServiceMetaInfo;
@@ -24,7 +26,9 @@ import io.vertx.core.net.NetSocket;
 import java.io.IOException;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -66,8 +70,12 @@ public class ServiceProxy implements InvocationHandler {
         if (CollUtil.isEmpty(serviceMetaInfos)) {
             throw new RuntimeException("查询不到服务");
         }
-        //目前只有一种服务，先取第一个
-        ServiceMetaInfo serviceMetaInfo = serviceMetaInfos.get(0);
+
+        //使用负载均衡器选择服务节点
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("methodName", method.getName());
+        LoadBalancer loadBalancer = LoadBalancerFactory.getInstance(rpcConfig.getLoadBalancer());
+        ServiceMetaInfo serviceMetaInfo = loadBalancer.select(paramMap, serviceMetaInfos);
 
         RpcResponse rpcResponse = VertxTcpClient.doRequest(rpcRequest, serviceMetaInfo);
         return rpcResponse.getData();

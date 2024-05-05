@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69e11e88-ba09-4ceb-9780-32fc844b9398" name="更改" comment="实现基于 TCP 传输的自定义协议，确定了协议消息的封装传递，编码解码；基于原本服务端处理请求的逻辑，封装 HandlerWrapper 类，增加了对半包，粘包的处理功能。">
+    <list default="true" id="69e11e88-ba09-4ceb-9780-32fc844b9398" name="更改" comment="封装发送自定协议请求消息的方法到 VertxTcpClient 类中，优化代理对象调用服务时的流程">
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/loadbalancer/ConsistentHashLoadBalancer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/loadbalancer/LoadBalancer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/loadbalancer/LoadBalancerFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/loadbalancer/LoadBalancerKeys.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/loadbalancer/RandomLoadBalancer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/loadbalancer/RoundRobinLoadBalancer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/resources/META-INF/rpc/system/com.ink.rpc.loadbalancer.LoadBalancer" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/config/RpcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/config/RpcConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/proxy/ServiceProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/proxy/ServiceProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/server/tcp/VertxTcpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/server/tcp/VertxTcpClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,9 +24,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="AnnotationType" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -36,6 +43,9 @@
         <option name="userSettingsFile" value="D:\safesoft\apache-maven-3.9.0\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2efCVeD3o94kyT00dEXFEKMVFd0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -63,6 +73,7 @@
     &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -130,7 +141,8 @@
       <workItem from="1714373091840" duration="8927000" />
       <workItem from="1714437850122" duration="11831000" />
       <workItem from="1714540024044" duration="12956000" />
-      <workItem from="1714730042547" duration="299000" />
+      <workItem from="1714730042547" duration="1414000" />
+      <workItem from="1714892746145" duration="5410000" />
     </task>
     <task id="LOCAL-00001" summary="完成基本流程与本地测试">
       <option name="closed" value="true" />
@@ -204,7 +216,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714560736752</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="封装发送自定协议请求消息的方法到 VertxTcpClient 类中，优化代理对象调用服务时的流程">
+      <option name="closed" value="true" />
+      <created>1714730750441</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1714730750441</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +250,7 @@
     <MESSAGE value="添加注册中心类及注册中心工厂类，可将服务注册到 ETCD 内。（待完成：服务提供方收到请求后调用服务具体实现类方法）" />
     <MESSAGE value="实现服务定时续期，消费者服务查询缓存，监听节点更新缓存功能" />
     <MESSAGE value="实现基于 TCP 传输的自定义协议，确定了协议消息的封装传递，编码解码；基于原本服务端处理请求的逻辑，封装 HandlerWrapper 类，增加了对半包，粘包的处理功能。" />
-    <option name="LAST_COMMIT_MESSAGE" value="实现基于 TCP 传输的自定义协议，确定了协议消息的封装传递，编码解码；基于原本服务端处理请求的逻辑，封装 HandlerWrapper 类，增加了对半包，粘包的处理功能。" />
+    <MESSAGE value="封装发送自定协议请求消息的方法到 VertxTcpClient 类中，优化代理对象调用服务时的流程" />
+    <option name="LAST_COMMIT_MESSAGE" value="封装发送自定协议请求消息的方法到 VertxTcpClient 类中，优化代理对象调用服务时的流程" />
   </component>
 </project>

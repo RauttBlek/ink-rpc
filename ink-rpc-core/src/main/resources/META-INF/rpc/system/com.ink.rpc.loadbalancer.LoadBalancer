@@ -1,0 +1,3 @@
+consistentHash=com.ink.rpc.loadbalancer.ConsistentHashLoadBalancer
+random=com.ink.rpc.loadbalancer.RandomLoadBalancer
+roundRobin=com.ink.rpc.loadbalancer.RoundRobinLoadBalancer
