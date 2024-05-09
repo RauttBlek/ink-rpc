@@ -1,0 +1,2 @@
+no=com.ink.rpc.retry.NoRetryStrategy
+fixedInterval=com.ink.rpc.retry.FixedIntervalRetryStrategy

@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69e11e88-ba09-4ceb-9780-32fc844b9398" name="更改" comment="封装发送自定协议请求消息的方法到 VertxTcpClient 类中，优化代理对象调用服务时的流程">
-      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/loadbalancer/ConsistentHashLoadBalancer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/loadbalancer/LoadBalancer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/loadbalancer/LoadBalancerFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/loadbalancer/LoadBalancerKeys.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/loadbalancer/RandomLoadBalancer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/loadbalancer/RoundRobinLoadBalancer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/resources/META-INF/rpc/system/com.ink.rpc.loadbalancer.LoadBalancer" afterDir="false" />
+    <list default="true" id="69e11e88-ba09-4ceb-9780-32fc844b9398" name="更改" comment="添加负载均衡功能（通过指定负载均衡器实例选择服务节点）">
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/retry/FixedIntervalRetryStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/retry/NoRetryStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/retry/RetryStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/retry/RetryStrategyFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/retry/RetryStrategyKeys.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ink-rpc-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ink-rpc-core/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/config/RpcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/config/RpcConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/proxy/ServiceProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/ink-rpc-core/src/main/java/com/ink/rpc/proxy/ServiceProxy.java" afterDir="false" />
     </list>
@@ -142,7 +141,8 @@
       <workItem from="1714437850122" duration="11831000" />
       <workItem from="1714540024044" duration="12956000" />
       <workItem from="1714730042547" duration="1414000" />
-      <workItem from="1714892746145" duration="5410000" />
+      <workItem from="1714892746145" duration="5575000" />
+      <workItem from="1715225512505" duration="4450000" />
     </task>
     <task id="LOCAL-00001" summary="完成基本流程与本地测试">
       <option name="closed" value="true" />
@@ -224,7 +224,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714730750441</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="添加负载均衡功能（通过指定负载均衡器实例选择服务节点）">
+      <option name="closed" value="true" />
+      <created>1714899623148</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1714899623148</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,6 +259,7 @@
     <MESSAGE value="实现服务定时续期，消费者服务查询缓存，监听节点更新缓存功能" />
     <MESSAGE value="实现基于 TCP 传输的自定义协议，确定了协议消息的封装传递，编码解码；基于原本服务端处理请求的逻辑，封装 HandlerWrapper 类，增加了对半包，粘包的处理功能。" />
     <MESSAGE value="封装发送自定协议请求消息的方法到 VertxTcpClient 类中，优化代理对象调用服务时的流程" />
-    <option name="LAST_COMMIT_MESSAGE" value="封装发送自定协议请求消息的方法到 VertxTcpClient 类中，优化代理对象调用服务时的流程" />
+    <MESSAGE value="添加负载均衡功能（通过指定负载均衡器实例选择服务节点）" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加负载均衡功能（通过指定负载均衡器实例选择服务节点）" />
   </component>
 </project>

@@ -14,6 +14,8 @@ import com.ink.rpc.model.ServiceMetaInfo;
 import com.ink.rpc.protocol.*;
 import com.ink.rpc.registry.Registry;
 import com.ink.rpc.registry.RegistryFactory;
+import com.ink.rpc.retry.RetryStrategy;
+import com.ink.rpc.retry.RetryStrategyFactory;
 import com.ink.rpc.serializer.Serializer;
 import com.ink.rpc.serializer.SerializerFactory;
 import com.ink.rpc.serializer.SerializerKeys;
@@ -73,11 +75,15 @@ public class ServiceProxy implements InvocationHandler {
 
         //使用负载均衡器选择服务节点
         Map<String, Object> paramMap = new HashMap<>();
+        //将请求方法名作为负载均衡参数
         paramMap.put("methodName", method.getName());
         LoadBalancer loadBalancer = LoadBalancerFactory.getInstance(rpcConfig.getLoadBalancer());
         ServiceMetaInfo serviceMetaInfo = loadBalancer.select(paramMap, serviceMetaInfos);
 
-        RpcResponse rpcResponse = VertxTcpClient.doRequest(rpcRequest, serviceMetaInfo);
+        RetryStrategy retryStrategy = RetryStrategyFactory.getRetryStrategyInstance(rpcConfig.getRetryStrategy());
+        RpcResponse rpcResponse = retryStrategy.doRetry(
+                () -> VertxTcpClient.doRequest(rpcRequest, serviceMetaInfo)
+        );
         return rpcResponse.getData();
 
     }
